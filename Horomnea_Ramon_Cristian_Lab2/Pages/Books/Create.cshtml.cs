@@ -30,6 +30,7 @@ public class CreateModel : PageModel
         
         //Commented the line below because model state is always invalid
         //We need to modify the code to work with Categories
+        //An alternative is to make Categories nullable
         //if (!ModelState.IsValid || _context.Book == null || Book == null) return Page();
 
         _context.Book.Add(Book);
