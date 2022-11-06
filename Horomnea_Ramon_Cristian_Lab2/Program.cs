@@ -1,14 +1,16 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Horomnea_Ramon_Cristian_Lab2.Data;
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<Horomnea_Ramon_Cristian_Lab2Context>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("Horomnea_Ramon_Cristian_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Horomnea_Ramon_Cristian_Lab2Context' not found.")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("Horomnea_Ramon_Cristian_Lab2Context") ??
+                      throw new InvalidOperationException(
+                          "Connection string 'Horomnea_Ramon_Cristian_Lab2Context' not found.")));
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

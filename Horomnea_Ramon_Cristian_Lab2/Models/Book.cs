@@ -1,9 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Horomnea_Ramon_Cristian_Lab2.Models;
 
 public class Book
 {
     public int ID { get; set; }
-    public string Title { get; set; }
+    [Display(Name = "Book Title")] public string Title { get; set; }
     public string Author { get; set; }
-    public decimal Price { get; set; }
+    [Column(TypeName = "decimal(6, 2)")] public decimal Price { get; set; }
+    [DataType(DataType.Date)] public DateTime PublishingDate { get; set; }
 }
