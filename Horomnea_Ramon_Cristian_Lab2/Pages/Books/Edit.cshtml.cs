@@ -2,6 +2,7 @@ using Horomnea_Ramon_Cristian_Lab2.Data;
 using Horomnea_Ramon_Cristian_Lab2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Horomnea_Ramon_Cristian_Lab2.Pages.Books;
@@ -23,6 +24,7 @@ public class EditModel : PageModel
 
         Book? book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
         if (book == null) return NotFound();
+        ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
         Book = book;
         return Page();
     }

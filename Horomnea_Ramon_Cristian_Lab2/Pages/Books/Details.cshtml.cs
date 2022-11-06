@@ -21,7 +21,7 @@ public class DetailsModel : PageModel
     {
         if (id == null || _context.Book == null) return NotFound();
 
-        Book? book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+        Book? book = await _context.Book.Include(b => b.Publisher).FirstOrDefaultAsync(m => m.ID == id);
         if (book == null)
             return NotFound();
         Book = book;

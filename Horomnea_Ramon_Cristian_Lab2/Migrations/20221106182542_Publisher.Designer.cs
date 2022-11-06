@@ -3,6 +3,7 @@ using System;
 using Horomnea_Ramon_Cristian_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Horomnea_Ramon_Cristian_Lab2.Migrations
 {
     [DbContext(typeof(Horomnea_Ramon_Cristian_Lab2Context))]
-    partial class Horomnea_Ramon_Cristian_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221106182542_Publisher")]
+    partial class Publisher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -47,42 +49,6 @@ namespace Horomnea_Ramon_Cristian_Lab2.Migrations
                     b.ToTable("Book");
                 });
 
-            modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.BookCategory", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BookID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("BookID");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("BookCategory");
-                });
-
-            modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.Category", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.Publisher", b =>
                 {
                     b.Property<int>("ID")
@@ -107,35 +73,6 @@ namespace Horomnea_Ramon_Cristian_Lab2.Migrations
                         .IsRequired();
 
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.BookCategory", b =>
-                {
-                    b.HasOne("Horomnea_Ramon_Cristian_Lab2.Models.Book", "Book")
-                        .WithMany("BookCategories")
-                        .HasForeignKey("BookID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Horomnea_Ramon_Cristian_Lab2.Models.Category", "Category")
-                        .WithMany("BookCategories")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.Book", b =>
-                {
-                    b.Navigation("BookCategories");
-                });
-
-            modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.Category", b =>
-                {
-                    b.Navigation("BookCategories");
                 });
 
             modelBuilder.Entity("Horomnea_Ramon_Cristian_Lab2.Models.Publisher", b =>
