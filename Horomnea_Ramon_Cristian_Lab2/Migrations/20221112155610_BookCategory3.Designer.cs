@@ -3,6 +3,7 @@ using System;
 using Horomnea_Ramon_Cristian_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Horomnea_Ramon_Cristian_Lab2.Migrations
 {
     [DbContext(typeof(Horomnea_Ramon_Cristian_Lab2Context))]
-    partial class Horomnea_Ramon_Cristian_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221112155610_BookCategory3")]
+    partial class BookCategory3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
